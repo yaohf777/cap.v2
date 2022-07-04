@@ -1,0 +1,32 @@
+[
+  {
+      "ROW_ID": "sg3q34z34z324g",
+      "USER_ID": "USER1",
+      "CONNECTOR": "SYSTEM1",
+      "ROLE": "ROLE1",
+      "__metadata": {
+          "uri": "http://localhost:3000/v2/dummy/Dataselection(USER_ID='USER1',CONNECTOR='SYSTEM1',ROLE='ROLE1')",
+          "type": "com.sap.grc.iag.accesscertification.DummyService.Dataselection"
+      }
+  },
+  {
+      "ROW_ID": "sg3q34z34z325g",
+      "USER_ID": "USER2",
+      "CONNECTOR": "SYSTEM1",
+      "ROLE": "ROLE2",
+      "__metadata": {
+          "uri": "http://localhost:3000/v2/dummy/Dataselection(USER_ID='USER2',CONNECTOR='SYSTEM1',ROLE='ROLE2')",
+          "type": "com.sap.grc.iag.accesscertification.DummyService.Dataselection"
+      }
+  },
+  {
+    "ROW_ID": "sg3q34z34z325g",
+    "USER_ID": "USER2",
+    "CONNECTOR": "SYSTEM1",
+    "ROLE": "ROLE3",
+    "__metadata": {
+        "uri": "http://localhost:3000/v2/dummy/Dataselection(USER_ID='USER2',CONNECTOR='SYSTEM1',ROLE='ROLE3')",
+        "type": "com.sap.grc.iag.accesscertification.DummyService.Dataselection"
+    }
+}
+]

@@ -1,0 +1,12 @@
+.settings/
+bin/
+WebContent/
+target/
+
+.project
+.classpath
+.factorypath
+*.mtar
+.mta
+dist
+node_modules

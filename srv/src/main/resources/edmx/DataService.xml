@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="DataService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="DataselectionUserDetailsRolesSystemsView" EntityType="DataService.DataselectionUserDetailsRolesSystemsView" sap:semantics="aggregate"/>
+      </EntityContainer>
+      <EntityType Name="DataselectionUserDetailsRolesSystemsView" sap:semantics="aggregate">
+        <Key>
+          <PropertyRef Name="USER_ID"/>
+          <PropertyRef Name="CONNECTOR"/>
+          <PropertyRef Name="PRIVILEGE"/>
+        </Key>
+        <Property Name="USER_ID" Type="Edm.String" MaxLength="50" sap:aggregation-role="dimension"/>
+        <Property Name="CONNECTOR" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension"/>
+        <Property Name="PRIVILEGE" Type="Edm.String" MaxLength="300" sap:aggregation-role="dimension"/>
+      </EntityType>
+      <Annotations Target="DataService.EntityContainer/DataselectionUserDetailsRolesSystemsView" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+<core:View xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.sap.rc.web.controller.Overview"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<Page title="{i18n>appTitle}" class="sapUiContentPadding">
+		<headerContent>
+			<Button icon="sap-icon://action" tooltip="Share" />
+		</headerContent>
+		<!-- <subHeader> <Toolbar><SearchField /></Toolbar> </subHeader> -->
+		<content>
+			<mvc:XMLView viewName="com.sap.rc.web.view.AnalysisList" />
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button text="{i18n>newAnalysisButtonText}" type="Accept" />
+				<Button text="Exit" type="Reject" />
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

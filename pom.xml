@@ -1,0 +1,275 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sap.cap</groupId>
+	<artifactId>v2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>srv</name>
+	<properties>
+		<m2eclipse.wtp.contextRoot>v2</m2eclipse.wtp.contextRoot>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<spring.framework.boot.version>1.5.14.RELEASE</spring.framework.boot.version>
+		<conf.target.directory>${project.build.directory}\classes\conf</conf.target.directory>
+
+		<sdk.bom.version>1.40.12</sdk.bom.version>
+		<sfin.sdk.version>2.28.0</sfin.sdk.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.sap.sgs</groupId>
+				<artifactId>security-patched-spring-boot-dependencies</artifactId>
+				<version>2.2.11.RELEASE-sap-01</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Start of cloud SDK ODataV2 dependency-->
+		<dependency>
+			<groupId>com.sap.cloud.servicesdk</groupId>
+			<artifactId>odata-v2-connectivity</artifactId>
+			<version>${sdk.bom.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+					<artifactId>scp-cf</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sap.cloud.s4hana</groupId>
+					<artifactId>s4hana-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Contained in scp-cf. Resolve issue: failed to determine the current 
+			Cloud platform while accessing user information. -->
+		<dependency>
+			<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+			<artifactId>security-scp-cf</artifactId>
+			<version>${sfin.sdk.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sap.cloud.s4hana.frameworks</groupId>
+					<artifactId>hystrix</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.netflix.hystrix</groupId>
+					<artifactId>hystrix-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Contained in scp-cf. Resolve issue: failed to determine the current 
+			Cloud platform while accessing tenant information. -->
+		<dependency>
+			<groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
+			<artifactId>tenant-scp-cf</artifactId>
+			<version>${sfin.sdk.version}</version>
+		</dependency>
+		<dependency>
+			<!-- OData V2 Spring Boot Starter -->
+			<groupId>com.sap.cloud.servicesdk.prov</groupId>
+			<artifactId>odatav2-spring-boot-starter</artifactId>
+			<version>${sdk.bom.version}</version>
+		</dependency>
+        <!-- End of cloud SDK ODataV2 dependency-->
+        
+		<!-- Start of dependency for main application -->
+		<!-- javax.servlet and Java injection -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		<!-- Tomcat -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>9.0.35</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Spring framework, WebMVC, cloud connector, boot -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-spring-service-connector</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		<!-- Security -->
+		<dependency>
+			<groupId>com.sap.cloud.sjb</groupId>
+			<artifactId>xs-user-holder</artifactId>
+			<version>1.16.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.cloud.security.xsuaa</groupId>
+			<artifactId>xsuaa-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- HANA: SCP database service instance, JDBC driver -->
+		<dependency>
+			<groupId>com.sap.hana.cloud</groupId>
+			<artifactId>spring-cloud-sap-connector</artifactId>
+			<version>1.0.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.hana.cloud</groupId>
+			<artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>
+			<version>1.0.4.RELEASE</version>
+		</dependency>
+		<!-- Multi-tenant library for Spring Boot applications using HANA -->
+		<dependency>
+			<groupId>com.sap.cloud.spring.boot</groupId>
+			<artifactId>spring-boot-multi-tenancy</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		<!-- EclipseLink as JPA implementation -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa</artifactId>
+			<version>2.7.7</version>
+		</dependency>
+		<!-- Olingo OData Processor -->
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-jpa-processor-core</artifactId>
+			<version>2.0.11</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.ws.rs</groupId>
+					<artifactId>javax.ws.rs-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.eclipse.persistence</groupId>
+					<artifactId>javax.persistence</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.hcp.cf.logging</groupId>
+			<artifactId>cf-java-logging-support-logback</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sap.hcp.cf.logging</groupId>
+			<artifactId>cf-java-logging-support-servlet</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+		<!-- Other libraries -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<!-- End of dependency for main application -->
+	</dependencies>
+	<build>
+		<sourceDirectory>srv/src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>srv/src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>	
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warSourceDirectory>web/webapp</warSourceDirectory>
+					<webResources>
+						<resource>
+							<directory>web/webapp</directory>
+							<targetPath>web</targetPath>
+						</resource>
+						<resource>
+							<directory>my.fake.namespace.forreal.fs/webapp</directory>
+							<targetPath>my.fake.namespace.forreal.fs</targetPath>
+						</resource>
+					</webResources>
+					<webXml>srv/src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<activation>
+				<property>
+					<name>devmode</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>3.0.0</version>
+						<configuration>
+							<webResources combine.children="append">
+								<resource>
+									<directory>${project.build.sourceDirectory}</directory>
+									<targetPath>sources</targetPath>
+								</resource>
+							</webResources>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

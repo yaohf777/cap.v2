@@ -1,0 +1,81 @@
+{
+  "namespace": "com.sap.grc.iag.accesscertification",
+  "definitions": {
+    "DataService": {
+      "@source": "dataService.cds",
+      "kind": "service"
+    },
+    "DataService.DataselectionUserDetailsRolesSystemsView": {
+      "kind": "entity",
+      "@readonly": true,
+      "@sap.semantics": "aggregate",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "com.sap.grc.iag.accesscertification.DATASELECTION_USER_DETAILS_ROLES_SYSTEMS_VIEW"
+            ]
+          }
+        }
+      },
+      "elements": {
+        "ROW_ID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "USER_ID": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 50
+        },
+        "CONNECTOR": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 20
+        },
+        "PRIVILEGE": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 300
+        }
+      },
+      "$syntax": "projection",
+      "@Capabilities.DeleteRestrictions.Deletable": false,
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.UpdateRestrictions.Updatable": false
+    },
+    "com.sap.grc.iag.accesscertification.DATASELECTION_USER_DETAILS_ROLES_SYSTEMS_VIEW": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "@sap.semantics": "aggregate",
+      "elements": {
+        "ROW_ID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32
+        },
+        "USER_ID": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 50
+        },
+        "CONNECTOR": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 20
+        },
+        "PRIVILEGE": {
+          "@sap.aggregation.role": "dimension",
+          "type": "cds.String",
+          "length": 300
+        }
+      }
+    }
+  },
+  "$version": "1.0",
+  "meta": {
+    "creator": "CDS Compiler v1.45.0",
+    "flavor": "inferred"
+  }
+}

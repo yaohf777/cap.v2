@@ -1,0 +1,41 @@
+ <mvc:View controllerName="my.fake.namespace.forreal.fs.controller.MainView"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+  xmlns:smartTable="sap.ui.comp.smarttable"
+  xmlns:table="sap.ui.table"
+  xmlns:mvc="sap.ui.core.mvc">
+  <App id="idAppControl" >
+    <pages>
+      <Page title="{i18n>title}">
+        <content>
+
+          <!-- DataselectionUserDetailsRolesSystemsViews -->
+          <smartFilterBar:SmartFilterBar id="coSmartFilterBar" considerSelectionVariants="true"	entitySet="DataselectionUserDetailsRolesSystemsView" 
+			 enableBasicSearch="false" showClearButton="true" liveMode="true">
+		     <!-- layout data used to make the table growing but the filter bar fixed -->
+             <smartFilterBar:layoutData>
+			   <FlexItemData shrinkFactor="0"/>
+			 </smartFilterBar:layoutData>
+		  </smartFilterBar:SmartFilterBar>
+
+          <smartTable:SmartTable id="coSmartTable" entitySet="DataselectionUserDetailsRolesSystemsView" smartFilterId="coSmartFilterBar"
+            tableType="AnalyticalTable" editable="false" enableAutoBinding="true" header="{i18n>campaignsHeader}"
+            class="sapUiResponsiveContentPadding" showRowCount="true">
+            <!-- requestAtLeastFields="RowId, CampaignId"-->
+
+            <!-- Start Custom Table -->
+            <!-- <table:AnalyticalTable id="coInternalTable" selectionMode="None">
+                 </table:AnalyticalTable> -->
+            <!-- End Custom Table -->
+
+            <smartTable:layoutData>
+              <FlexItemData growFactor="1" baseSize="0%"/>
+            </smartTable:layoutData>
+          </smartTable:SmartTable>
+
+        </content>
+      </Page>
+    </pages>
+  </App>
+</mvc:View>

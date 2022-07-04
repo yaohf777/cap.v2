@@ -1,0 +1,16 @@
+{
+  "generator-easy-ui5": {
+    "projectname": "fs",
+    "namespace": "my.fake.namespace.forreal",
+    "platform": "Fiori Launchpad on Cloud Foundry",
+    "viewtype": "XML",
+    "viewname": "MainView",
+    "ui5libs": "Content delivery network (SAPUI5)",
+    "newdir": true,
+    "namespaceURI": "my/fake/namespace/forreal",
+    "uimodules": [
+      "uimodule"
+    ],
+    "setupCompleted": true
+  }
+}
