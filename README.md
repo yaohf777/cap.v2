@@ -1,4 +1,4 @@
-PoC for **oDataV2** based on CAP
+SAP CAP **oDataV2** PoC
 
 
 ## Application Programming Model
