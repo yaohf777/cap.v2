@@ -5,7 +5,7 @@ SAP CAP **oDataV2** PoC
 The [BTP application programming model](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/00823f91779d4d42aa29a498e0535cdf.html) is followed.
 
 * UI5 is used in the user interface layer
-* Java is used in the service layer. [SAP Cloud SDK](https://mvnrepository.com/artifact/com.sap.cloud.servicesdk.prov/projects-parent) is utilized to provide oData V4 service.
+* Java is used in the service layer. [SAP Cloud SDK](https://mvnrepository.com/artifact/com.sap.cloud.servicesdk.prov/projects-parent) is utilized to provide oData V2 service.
 * HANA DB and HANA Core Data Service (CDS) is used in the data layer
 
 ## Development Guideline
